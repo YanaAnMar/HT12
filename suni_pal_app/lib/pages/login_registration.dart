@@ -10,8 +10,32 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('login page'),
+    return Scaffold(
+      body: Column(
+        children: [
+
+          TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+              ),
+              onEditingComplete: () {
+                setState(() {
+                  
+                });
+              },
+            ),
+
+          FilledButton(
+              onPressed: () {}, 
+              style: FilledButton.styleFrom(
+                foregroundColor: Colors.cyan,
+              ),
+              child: Text('Click me'),
+            ),
+
+
+        ],
+      )
     );
   }
 }
