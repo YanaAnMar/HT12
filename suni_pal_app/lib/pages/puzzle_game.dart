@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({super.key});
+class PuzzleGame extends StatefulWidget {
+  const PuzzleGame({super.key});
 
   @override
-  State<Settings> createState() => _SettingsState();
+  State<PuzzleGame> createState() => _PuzzleGameState();
 }
 
-class _SettingsState extends State<Settings> {
+class _PuzzleGameState extends State<PuzzleGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text('Puzzle'),
       ),
       body: Center(
         child: Padding(

@@ -21,8 +21,7 @@ class _DotsGameState extends State<DotsGame> {
             
           ),
         ),
-      )
-        
+      ),  
     );
   }
 }
