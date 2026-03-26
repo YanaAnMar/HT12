@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suni_pal_app/pages/sounds_game.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -12,7 +13,70 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
     appBar: AppBar(
-      title: Text("Homepage")
+      title: Text("Homepage"),
+      centerTitle: true,
+      actions: [
+        IconButton(
+          onPressed: () {
+          },
+          icon: Icon(Icons.settings)
+        ),
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            InkWell(
+            splashColor: Colors.teal,
+            onTap: (){
+              Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return SoundsGame();
+                    },
+                  ),
+              );
+            },
+             child: Container(
+              height: 200,
+              width: double.infinity,
+              color: Colors.cyan,
+            ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            InkWell(
+            splashColor: Colors.teal,
+            onTap: (){
+            },
+            child: Container(
+              height: 200,
+              width: double.infinity,
+              color: Colors.cyan,
+            ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            InkWell(
+            splashColor: Colors.teal,
+            onTap: (){
+            },
+            child: Container(
+              height: 200,
+              width: double.infinity,
+              color: Colors.cyan,
+            ),
+            ),
+
+          ],
+        ),
+      ),
+
     ),
   );
   }
