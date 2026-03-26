@@ -14,9 +14,10 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         children: [
 
-          TextField(
+          TextFormField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
+                labelText: 'Enter email address',
               ),
               onEditingComplete: () {
                 setState(() {
