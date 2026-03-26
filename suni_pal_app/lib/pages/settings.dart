@@ -14,15 +14,19 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         title: Text('Settings'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
+      body: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
-            
+            children: [
+              Text(
+                'Appearance:',
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
+            ],
           ),
         ),
-      ),
-        
     );
   }
 }
