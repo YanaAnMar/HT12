@@ -13,8 +13,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 218, 241, 249)),
         scaffoldBackgroundColor: const Color.fromARGB(255, 222, 250, 254),
+        appBarTheme: const AppBarTheme(
+        backgroundColor: Color.fromARGB(255, 222, 250, 254),
+       ),
       ),
       home: Homepage(),
     );
