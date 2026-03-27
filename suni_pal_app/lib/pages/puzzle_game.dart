@@ -11,6 +11,7 @@ class PuzzleGame extends StatefulWidget {
 class _PuzzleGameState extends State<PuzzleGame> {
   static const int gridSize = 3;
   late List<int> tiles;
+  int _currentPuzzle = 1;
 
   @override
 
@@ -20,14 +21,17 @@ class _PuzzleGameState extends State<PuzzleGame> {
   }
 
   void initPuzzle(){
-    tiles = List.generate(gridSize * gridSize, (index) => index);
+    tiles = List.generate(gridSize * gridSize, (index) {
+      if (index == gridSize * gridSize - 1) return 0;
+      return index + 1;
+    });
     shuffle();
   }
 
   void shuffle(){
     final random = Random();
 
-    for (int i = 0; i < 20; i++){
+    for (int i = 0; i < 50; i++){
       List<int> movableTiles = [];
 
       for (int j = 0; j < tiles.length; j++){
@@ -87,7 +91,10 @@ class _PuzzleGameState extends State<PuzzleGame> {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              initPuzzle();
+              setState(() {
+                _currentPuzzle = _currentPuzzle == 1 ? 2 : 1;
+                initPuzzle();
+              });
             },
             child: const Text("Play again"),
           ),
@@ -133,7 +140,7 @@ class _PuzzleGameState extends State<PuzzleGame> {
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
-                          'images/puz1_$tile.jpg',
+                          'images/puzzles/puz${_currentPuzzle}_$tile.jpg',
                           fit: BoxFit.cover,
                         ),
                       ),
