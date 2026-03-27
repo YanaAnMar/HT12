@@ -67,9 +67,13 @@ class _PuzzleGameState extends State<PuzzleGame> {
 
     if (notify){
       setState(() {});
-       if (isSolved()){
-        winScreen();
-       }
+      if (isSolved()){
+        setState(() {
+          _currentPuzzle = _currentPuzzle == 1 ? 2 : 1;
+          // delayed(Duration(seconds: 1), )
+          initPuzzle();
+        });
+      }
     }
   }
 
@@ -80,27 +84,6 @@ class _PuzzleGameState extends State<PuzzleGame> {
       }
     }
     return tiles.last == 0;
-  }
-
-  void winScreen(){
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: const Text("You win!"),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              setState(() {
-                _currentPuzzle = _currentPuzzle == 1 ? 2 : 1;
-                initPuzzle();
-              });
-            },
-            child: const Text("Play again"),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -124,7 +107,7 @@ class _PuzzleGameState extends State<PuzzleGame> {
                     crossAxisCount: gridSize,
                     mainAxisSpacing: 6,
                     crossAxisSpacing: 6,
-                  ), 
+                  ),
                   itemBuilder: (context, index) {
                 final tile = tiles[index];
 
@@ -140,13 +123,19 @@ class _PuzzleGameState extends State<PuzzleGame> {
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
-                          'images/puzzles/puz${_currentPuzzle}_$tile.jpg',
+                          'assets/images/puzzles/puz${_currentPuzzle}_$tile.jpg',
                           fit: BoxFit.cover,
                         ),
                       ),
                 );
               },
                 ),
+              ),
+              const SizedBox(height: 16),
+              IconButton(
+                iconSize: 40,
+                icon: const Icon(Icons.refresh),
+                onPressed: () => setState(() => initPuzzle()),
               ),
             ],
           ),
