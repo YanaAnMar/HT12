@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suni_pal_app/pages/dots_game.dart';
 import 'package:suni_pal_app/pages/puzzle_game.dart';
+import 'package:suni_pal_app/pages/sorting_game.dart';
 import 'package:suni_pal_app/pages/sounds_game.dart';
 
 class Homepage extends StatefulWidget {
@@ -24,53 +25,89 @@ class _HomepageState extends State<Homepage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              InkWell(
+              Material(
+              borderRadius: BorderRadius.circular(60),
+              clipBehavior: Clip.antiAlias, 
+              child: InkWell(
+                borderRadius: BorderRadius.circular(60),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => SoundsGame()),
                   );
                 },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(40.0),
-                  child: Container(
-                    height: 220,
-                    width: double.infinity,
+                child: SizedBox(
+                  height: 185,
+                  child: Image.asset(
+                    'images/banners/sounds.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
+            ),
               SizedBox(height: 30.0),
-              InkWell(
+              Material(
+              borderRadius: BorderRadius.circular(60),
+              clipBehavior: Clip.antiAlias, 
+              child: InkWell(
+                borderRadius: BorderRadius.circular(60),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => DotsGame()),
                   );
                 },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(40.0),
-                  child: Container(
-                    height: 220,
-                    width: double.infinity,
+                child: SizedBox(
+                  height: 185,
+                  child: Image.asset(
+                    'images/banners/dots.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
+            ),
               SizedBox(height: 30.0),
-              InkWell(
+              Material(
+              borderRadius: BorderRadius.circular(60),
+              clipBehavior: Clip.antiAlias, 
+              child: InkWell(
+                borderRadius: BorderRadius.circular(60),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => PuzzleGame()),
                   );
                 },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(40.0),
-                  child: Container(
-                    height: 220,
-                    width: double.infinity,
+                child: SizedBox(
+                  height: 185,
+                  child: Image.asset(
+                    'images/banners/puzzle.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
+            ),
+              SizedBox(height: 30.0),
+              Material(
+              borderRadius: BorderRadius.circular(60),
+              clipBehavior: Clip.antiAlias, 
+              child: InkWell(
+                borderRadius: BorderRadius.circular(60),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SortingGame()),
+                  );
+                },
+                child: SizedBox(
+                  height: 185,
+                  child: Image.asset(
+                    'images/banners/sorter.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
             ],
           ),
         ),
