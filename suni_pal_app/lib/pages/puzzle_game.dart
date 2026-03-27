@@ -123,23 +123,20 @@ class _PuzzleGameState extends State<PuzzleGame> {
 
                 return GestureDetector(
                   onTap: () => moveTile(index),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    decoration: BoxDecoration(
-                      color: tile == 0 ? Colors.transparent : Colors.blue,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        tile == 0 ? '' : tile.toString(),
-                        style: const TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                  child: tile == 0
+                    ? Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black12,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      )
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          'images/puz1_$tile.jpg',
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                  ),
                 );
               },
                 ),
