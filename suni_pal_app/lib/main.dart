@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:suni_pal_app/pages/login_registration.dart';
+import 'package:suni_pal_app/pages/homepage.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,11 +13,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor:Colors.lightBlue,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 218, 241, 249)),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 222, 250, 254),
       ),
-      home: LoginPage(),
-      );
+      home: Homepage(),
+    );
   }
 }
