@@ -168,10 +168,13 @@ class _DotsGameState extends State<DotsGame> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 222, 250, 254),
       appBar: AppBar(
-        backgroundColor: Colors.white, elevation: 0,
-        title: const Text('Press Here', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87)),
+        backgroundColor: Color.fromARGB(255, 222, 250, 254), elevation: 0,
+        title: Image.asset(
+            'images/page_titles/dots_title.png',
+            height: 40,
+          ),
         iconTheme: const IconThemeData(color: Colors.black87),
         actions: [IconButton(icon: const Icon(Icons.refresh), onPressed: _restart, tooltip: 'Start Over')],
       ),

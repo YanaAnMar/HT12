@@ -21,8 +21,7 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         leadingWidth: 170,
         leading: Image.asset(
-            'images/sunipal_logo.png',
-            fit: BoxFit.contain
+            'images/sunipal_logo.png'
           ),
         
       ),

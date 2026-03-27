@@ -107,7 +107,10 @@ class _PuzzleGameState extends State<PuzzleGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Slide puzzle'),
+        title: Image.asset(
+          'images/page_titles/puzzle.png',
+          height: 60,
+          ),
       ),
       body: Center(
         child: Padding(

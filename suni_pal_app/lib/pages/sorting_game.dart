@@ -9,8 +9,7 @@ class SortingGame extends StatefulWidget {
 
 class _SortingGameState extends State<SortingGame> {
   static const int _count = 5;
-  late List<double> _sizes;
-  late List<Color> _colors;
+  late List<int> _order;
   bool _won = false;
 
   final _rng = Random();
@@ -23,30 +22,22 @@ class _SortingGameState extends State<SortingGame> {
   }
 
   void _newRound() {
-    _sizes = List.generate(_count, (i) => 40.0 + i * 25);
-    _colors = List.generate(_count, (i) => _palette[i % _palette.length]);
-
     do {
-      final order = List.generate(_count, (i) => i)..shuffle(_rng);
-      final shuffledSizes = [for (final i in order) _sizes[i]];
-      final shuffledColors = [for (final i in order) _colors[i]];
-      _sizes = shuffledSizes;
-      _colors = shuffledColors;
+      _order = List.generate(_count, (i) => i)..shuffle(_rng);
     } while (_isSorted());
     _won = false;
   }
 
   bool _isSorted() {
-    for (int i = 0; i < _sizes.length - 1; i++) {
-      if (_sizes[i] > _sizes[i + 1]) return false;
+    for (int i = 0; i < _order.length - 1; i++) {
+      if (_order[i] > _order[i + 1]) return false;
     }
     return true;
   }
 
   void _swap(int a, int b) {
     setState(() {
-      final tmpS = _sizes[a]; _sizes[a] = _sizes[b]; _sizes[b] = tmpS;
-      final tmpC = _colors[a]; _colors[a] = _colors[b]; _colors[b] = tmpC;
+      final tmp = _order[a]; _order[a] = _order[b]; _order[b] = tmp;
       if (_isSorted()) _won = true;
     });
   }
@@ -74,35 +65,46 @@ class _SortingGameState extends State<SortingGame> {
             ),
           ),
           Expanded(
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(_count, (i) {
-                  final isSelected = _selected == i;
-                  return GestureDetector(
-                    onTap: () {
-                      if (_won) return;
-                      if (_selected == null) {
-                        setState(() => _selected = i);
-                      } else {
-                        if (_selected != i) _swap(_selected!, i);
-                        setState(() => _selected = null);
-                      }
-                    },
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      width: _sizes[i],
-                      height: _sizes[i],
-                      decoration: BoxDecoration(
-                        color: _colors[i],
-                        shape: BoxShape.circle,
-                        border: isSelected ? Border.all(color: Colors.black, width: 3) : null,
-                        boxShadow: [BoxShadow(color: _colors[i].withValues(alpha: 0.4), blurRadius: 8)],
-                      ),
-                    ),
-                  );
-                }),
-              ),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final maxCircle = min(constraints.maxWidth / (_count + 1), constraints.maxHeight * 0.6);
+                final minCircle = maxCircle * 0.35;
+                final step = (maxCircle - minCircle) / (_count - 1);
+
+                return Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: List.generate(_count, (i) {
+                      final rank = _order[i];
+                      final size = minCircle + rank * step;
+                      final color = _palette[rank % _palette.length];
+                      final isSelected = _selected == i;
+                      return GestureDetector(
+                        onTap: () {
+                          if (_won) return;
+                          if (_selected == null) {
+                            setState(() => _selected = i);
+                          } else {
+                            if (_selected != i) _swap(_selected!, i);
+                            setState(() => _selected = null);
+                          }
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          width: size,
+                          height: size,
+                          decoration: BoxDecoration(
+                            color: color,
+                            shape: BoxShape.circle,
+                            border: isSelected ? Border.all(color: Colors.black, width: 3) : null,
+                            boxShadow: [BoxShadow(color: color.withValues(alpha: 0.4), blurRadius: 8)],
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                );
+              },
             ),
           ),
           if (_won)
