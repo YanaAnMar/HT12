@@ -23,10 +23,9 @@ class _SortingGameState extends State<SortingGame> {
   }
 
   void _newRound() {
-    // Generate sorted sizes, then shuffle them
     _sizes = List.generate(_count, (i) => 40.0 + i * 25);
     _colors = List.generate(_count, (i) => _palette[i % _palette.length]);
-    // Shuffle until not already sorted
+
     do {
       final order = List.generate(_count, (i) => i)..shuffle(_rng);
       final shuffledSizes = [for (final i in order) _sizes[i]];

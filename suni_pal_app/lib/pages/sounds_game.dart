@@ -9,11 +9,11 @@ class SoundsGame extends StatefulWidget {
 }
 
 class _SoundsGameState extends State<SoundsGame> {
-  final List<String> soundOptions = const [
-    'images/banners/xylophone.png',
-    'images/banners/guitar.png',
-    'images/banners/piano.png',
-    'images/banners/violin.png',
+  final List<({String image, String soundKey})> soundOptions = const [
+    (image: 'images/banners/xylophone.png', soundKey: 'xylophone'),
+    (image: 'images/banners/guitar.png', soundKey: 'guitar'),
+    (image: 'images/banners/piano.png', soundKey: 'piano'),
+    (image: 'images/banners/violin.png', soundKey: 'violin'),
   ];
 
   @override
@@ -40,7 +40,7 @@ class _SoundsGameState extends State<SoundsGame> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => SongsPage(
-                              selectedSound: soundOptions[index],
+                              selectedSound: soundOptions[index].soundKey,
                             ),
                           ),
                         );
@@ -58,7 +58,7 @@ class _SoundsGameState extends State<SoundsGame> {
                         width: double.infinity,
                         height: double.infinity,
                         child: Image.asset(
-                          soundOptions[index],
+                          soundOptions[index].image,
                           fit: BoxFit.cover,
                         ),
                       ),

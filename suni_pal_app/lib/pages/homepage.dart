@@ -14,21 +14,29 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
+
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("SuniPal"),
+        leadingWidth: 170,
+        leading: Image.asset(
+            'images/sunipal_logo.png',
+            fit: BoxFit.contain
+          ),
+        
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: MediaQuery.of(context).size.height,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: screenHeight, 
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Center( 
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center, 
+                crossAxisAlignment: CrossAxisAlignment.center, 
                 children: [
                   Material(
                     borderRadius: BorderRadius.circular(60),
@@ -42,7 +50,8 @@ class _HomepageState extends State<Homepage> {
                         );
                       },
                       child: SizedBox(
-                        height: 185,
+                        height: screenHeight * 0.32, 
+                        width: double.infinity,
                         child: Image.asset(
                           'images/banners/sounds.png',
                           fit: BoxFit.cover,
@@ -50,7 +59,8 @@ class _HomepageState extends State<Homepage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: screenHeight * 0.05), 
+                  
                   Material(
                     borderRadius: BorderRadius.circular(60),
                     clipBehavior: Clip.antiAlias,
@@ -63,7 +73,8 @@ class _HomepageState extends State<Homepage> {
                         );
                       },
                       child: SizedBox(
-                        height: 185,
+                        height: screenHeight * 0.32,
+                        width: double.infinity,
                         child: Image.asset(
                           'images/banners/dots.png',
                           fit: BoxFit.cover,
@@ -71,7 +82,8 @@ class _HomepageState extends State<Homepage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: screenHeight * 0.05),
+                  
                   Material(
                     borderRadius: BorderRadius.circular(60),
                     clipBehavior: Clip.antiAlias,
@@ -84,7 +96,8 @@ class _HomepageState extends State<Homepage> {
                         );
                       },
                       child: SizedBox(
-                        height: 185,
+                        height: screenHeight * 0.32, 
+                        width: double.infinity,
                         child: Image.asset(
                           'images/banners/puzzle.png',
                           fit: BoxFit.cover,
@@ -92,7 +105,8 @@ class _HomepageState extends State<Homepage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  SizedBox(height: screenHeight * 0.05), 
+                  
                   Material(
                     borderRadius: BorderRadius.circular(60),
                     clipBehavior: Clip.antiAlias,
@@ -105,7 +119,8 @@ class _HomepageState extends State<Homepage> {
                         );
                       },
                       child: SizedBox(
-                        height: 185,
+                        height: screenHeight * 0.32, 
+                        width: double.infinity,
                         child: Image.asset(
                           'images/banners/sorter.png',
                           fit: BoxFit.cover,

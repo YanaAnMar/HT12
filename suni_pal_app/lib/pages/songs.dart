@@ -24,21 +24,21 @@ class _SongsPageState extends State<SongsPage>
   String? _errorMessage;
 
   static const Map<String, SongItem> songsBySound = {
-    '1': SongItem(
-      title: 'Cello',
-      assetPath: 'audio/cello.mp3',
-    ),
-    '2': SongItem(
-      title: 'Guitar',
-      assetPath: 'audio/guitar.mp3',
-    ),
-    '3': SongItem(
-      title: 'Piano',
-      assetPath: 'audio/piano.mp3',
-    ),
-    '4': SongItem(
+    'xylophone': SongItem(
       title: 'Xylophone',
-      assetPath: 'audio/xylophone.mp3',
+      assetPath: 'assets/audio/xylophone.mp3',
+    ),
+    'guitar': SongItem(
+      title: 'Guitar',
+      assetPath: 'assets/audio/guitar.mp3',
+    ),
+    'piano': SongItem(
+      title: 'Piano',
+      assetPath: 'assets/audio/piano.mp3',
+    ),
+    'violin': SongItem(
+      title: 'Violin',
+      assetPath: 'assets/audio/cello.mp3',
     ),
   };
 
@@ -68,7 +68,7 @@ class _SongsPageState extends State<SongsPage>
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.selectedSound),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 222, 250, 254),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 24),
