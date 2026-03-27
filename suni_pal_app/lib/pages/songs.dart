@@ -24,21 +24,21 @@ class _SongsPageState extends State<SongsPage>
   String? _errorMessage;
 
   static const Map<String, SongItem> songsBySound = {
-    'Rain': SongItem(
-      title: 'Gentle Rain',
-      assetPath: 'assets/audio/rain.mp3',
+    '1': SongItem(
+      title: 'Cello',
+      assetPath: 'audio/cello.mp3',
     ),
-    'Ocean': SongItem(
-      title: 'Ocean Waves',
-      assetPath: 'assets/audio/ocean.mp3',
+    '2': SongItem(
+      title: 'Guitar',
+      assetPath: 'audio/guitar.mp3',
     ),
-    'Birds': SongItem(
-      title: 'Morning Birds',
-      assetPath: 'assets/audio/birds.mp3',
+    '3': SongItem(
+      title: 'Piano',
+      assetPath: 'audio/piano.mp3',
     ),
-    'Wind': SongItem(
-      title: 'Soft Wind',
-      assetPath: 'assets/audio/wind.mp3',
+    '4': SongItem(
+      title: 'Xylophone',
+      assetPath: 'audio/xylophone.mp3',
     ),
   };
 
@@ -66,10 +66,9 @@ class _SongsPageState extends State<SongsPage>
     final selectedSong = songsBySound[widget.selectedSound];
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 243, 241, 216),
       appBar: AppBar(
         title: Text(widget.selectedSound),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 24),
@@ -88,28 +87,11 @@ class _SongsPageState extends State<SongsPage>
               ),
             ),
             const SizedBox(height: 12),
-            Text(
-              '${widget.selectedSound} Song',
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Playback stays inside the app using MP3 files.',
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.grey.shade700,
-              ),
-            ),
-            const SizedBox(height: 16),
             if (selectedSong != null)
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -123,15 +105,7 @@ class _SongsPageState extends State<SongsPage>
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      selectedSong.assetPath,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                      ),
-                    ),
                     const SizedBox(height: 20),
-                    _buildStatus(selectedSong),
                     const SizedBox(height: 20),
                     _buildProgressBar(),
                     const SizedBox(height: 20),
@@ -447,7 +421,7 @@ class CirclePainter extends CustomPainter {
     );
 
     final ringPaint = Paint()
-      ..color = Colors.white.withAlpha(36)
+      ..color = const Color.fromARGB(255, 226, 174, 231).withAlpha(36)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
 
