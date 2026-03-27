@@ -14,8 +14,10 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
-
-    double screenHeight = MediaQuery.of(context).size.height;
+    final screenSize = MediaQuery.of(context).size;
+    final screenHeight = screenSize.height;
+    final horizontalPadding = screenSize.width < 600 ? 20.0 : 32.0;
+    final bannerSpacing = screenHeight * 0.05;
 
     return Scaffold(
       appBar: AppBar(
@@ -29,108 +31,74 @@ class _HomepageState extends State<Homepage> {
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            minHeight: screenHeight, 
+            minHeight: screenHeight,
           ),
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Center( 
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center, 
-                crossAxisAlignment: CrossAxisAlignment.center, 
-                children: [
-                  Material(
-                    borderRadius: BorderRadius.circular(60),
-                    clipBehavior: Clip.antiAlias,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(60),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SoundsGame()),
-                        );
-                      },
-                      child: SizedBox(
-                        height: screenHeight * 0.32, 
-                        width: double.infinity,
-                        child: Image.asset(
-                          'assets/images/banners/sounds.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+            padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding,
+              vertical: 20,
+            ),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 960),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _buildBanner(
+                      context: context,
+                      imagePath: 'assets/images/banners/sounds.png',
+                      destination: SoundsGame(),
                     ),
-                  ),
-                  SizedBox(height: screenHeight * 0.05), 
-                  
-                  Material(
-                    borderRadius: BorderRadius.circular(60),
-                    clipBehavior: Clip.antiAlias,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(60),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => DotsGame()),
-                        );
-                      },
-                      child: SizedBox(
-                        height: screenHeight * 0.32,
-                        width: double.infinity,
-                        child: Image.asset(
-                          'assets/images/banners/dots.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                    SizedBox(height: bannerSpacing),
+                    _buildBanner(
+                      context: context,
+                      imagePath: 'assets/images/banners/dots.png',
+                      destination: DotsGame(),
                     ),
-                  ),
-                  SizedBox(height: screenHeight * 0.05),
-                  
-                  Material(
-                    borderRadius: BorderRadius.circular(60),
-                    clipBehavior: Clip.antiAlias,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(60),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => PuzzleGame()),
-                        );
-                      },
-                      child: SizedBox(
-                        height: screenHeight * 0.32, 
-                        width: double.infinity,
-                        child: Image.asset(
-                          'assets/images/banners/puzzle.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                    SizedBox(height: bannerSpacing),
+                    _buildBanner(
+                      context: context,
+                      imagePath: 'assets/images/banners/puzzle.png',
+                      destination: PuzzleGame(),
                     ),
-                  ),
-                  SizedBox(height: screenHeight * 0.05), 
-                  
-                  Material(
-                    borderRadius: BorderRadius.circular(60),
-                    clipBehavior: Clip.antiAlias,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(60),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SortingGame()),
-                        );
-                      },
-                      child: SizedBox(
-                        height: screenHeight * 0.32, 
-                        width: double.infinity,
-                        child: Image.asset(
-                          'assets/images/banners/sorter.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                    SizedBox(height: bannerSpacing),
+                    _buildBanner(
+                      context: context,
+                      imagePath: 'assets/images/banners/sorter.png',
+                      destination: SortingGame(),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBanner({
+    required BuildContext context,
+    required String imagePath,
+    required Widget destination,
+  }) {
+    return Material(
+      borderRadius: BorderRadius.circular(60),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(60),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => destination),
+          );
+        },
+        child: AspectRatio(
+          aspectRatio: 16 / 7,
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
           ),
         ),
       ),

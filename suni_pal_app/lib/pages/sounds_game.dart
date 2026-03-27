@@ -18,55 +18,57 @@ class _SoundsGameState extends State<SoundsGame> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final horizontalPadding = screenWidth < 600 ? 20.0 : 32.0;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sounds'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: List.generate(soundOptions.length, (index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: SizedBox(
-                    height: 130,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 20),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 960),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: List.generate(soundOptions.length, (index) {
+                  final option = soundOptions[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => SongsPage(
-                              selectedSound: soundOptions[index].soundKey,
+                              selectedSound: option.soundKey,
                             ),
                           ),
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      minimumSize: Size(double.infinity, 130),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: ClipRRect( 
-                      borderRadius: BorderRadius.circular(12),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: double.infinity,
-                        child: Image.asset(
-                          soundOptions[index].image,
-                          fit: BoxFit.cover,
+                        padding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                     ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: AspectRatio(
+                          aspectRatio: 16 / 5,
+                          child: Image.asset(
+                            option.image,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                );
-              }),
+                  );
+                }),
+              ),
             ),
           ),
         ),
