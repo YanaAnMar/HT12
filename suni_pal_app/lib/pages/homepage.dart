@@ -21,7 +21,7 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         leadingWidth: 170,
         leading: Image.asset(
-            'assets/images/sunipal_logo.png', 
+            'images/sunipal_logo.png', 
             fit: BoxFit.contain
           ),
         
@@ -53,7 +53,7 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.32, 
                         width: double.infinity,
                         child: Image.asset(
-                          'assets/images/banners/sounds.png',
+                          'images/banners/sounds.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -76,7 +76,7 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.32,
                         width: double.infinity,
                         child: Image.asset(
-                          'assets/images/banners/dots.png',
+                          'images/banners/dots.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -99,7 +99,7 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.32, 
                         width: double.infinity,
                         child: Image.asset(
-                          'assets/images/banners/puzzle.png',
+                          'images/banners/puzzle.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -122,7 +122,7 @@ class _HomepageState extends State<Homepage> {
                         height: screenHeight * 0.32, 
                         width: double.infinity,
                         child: Image.asset(
-                          'assets/images/banners/sorter.png',
+                          'images/banners/sorter.png',
                           fit: BoxFit.cover,
                         ),
                       ),
