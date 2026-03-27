@@ -126,7 +126,7 @@ class _PuzzleGameState extends State<PuzzleGame> {
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
-                          'assets/images/puzzles/puz${_currentPuzzle}_$tile.jpg',
+                          'images/puzzles/puz${_currentPuzzle}_$tile.jpg',
                           fit: BoxFit.cover,
                         ),
                       ),

@@ -23,7 +23,7 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         leadingWidth: 170,
         leading: Image.asset(
-            'assets/images/sunipal_logo.png', 
+            'images/sunipal_logo.png', 
             fit: BoxFit.contain
           ),
         
@@ -72,6 +72,33 @@ class _HomepageState extends State<Homepage> {
                 ),
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBanner({
+    required BuildContext context,
+    required String imagePath,
+    required Widget destination,
+  }) {
+    return Material(
+      borderRadius: BorderRadius.circular(60),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(60),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => destination),
+          );
+        },
+        child: AspectRatio(
+          aspectRatio: 16 / 7,
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
           ),
         ),
       ),
