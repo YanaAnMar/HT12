@@ -10,10 +10,10 @@ class SoundsGame extends StatefulWidget {
 
 class _SoundsGameState extends State<SoundsGame> {
   final List<String> soundOptions = const [
-    'Rain',
-    'Ocean',
-    'Birds',
-    'Wind',
+    '1',
+    '2',
+    '3',
+    '4',
   ];
 
   @override
