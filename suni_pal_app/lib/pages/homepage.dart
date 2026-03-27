@@ -17,98 +17,105 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("SuniPal"),
-        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              Material(
-              borderRadius: BorderRadius.circular(60),
-              clipBehavior: Clip.antiAlias, 
-              child: InkWell(
-                borderRadius: BorderRadius.circular(60),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SoundsGame()),
-                  );
-                },
-                child: SizedBox(
-                  height: 185,
-                  child: Image.asset(
-                    'images/banners/sounds.png',
-                    fit: BoxFit.cover,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Material(
+                    borderRadius: BorderRadius.circular(60),
+                    clipBehavior: Clip.antiAlias,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(60),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SoundsGame()),
+                        );
+                      },
+                      child: SizedBox(
+                        height: 185,
+                        child: Image.asset(
+                          'images/banners/sounds.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(height: 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(60),
+                    clipBehavior: Clip.antiAlias,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(60),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DotsGame()),
+                        );
+                      },
+                      child: SizedBox(
+                        height: 185,
+                        child: Image.asset(
+                          'images/banners/dots.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(60),
+                    clipBehavior: Clip.antiAlias,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(60),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PuzzleGame()),
+                        );
+                      },
+                      child: SizedBox(
+                        height: 185,
+                        child: Image.asset(
+                          'images/banners/puzzle.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30.0),
+                  Material(
+                    borderRadius: BorderRadius.circular(60),
+                    clipBehavior: Clip.antiAlias,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(60),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SortingGame()),
+                        );
+                      },
+                      child: SizedBox(
+                        height: 185,
+                        child: Image.asset(
+                          'images/banners/sorter.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-              SizedBox(height: 30.0),
-              Material(
-              borderRadius: BorderRadius.circular(60),
-              clipBehavior: Clip.antiAlias, 
-              child: InkWell(
-                borderRadius: BorderRadius.circular(60),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DotsGame()),
-                  );
-                },
-                child: SizedBox(
-                  height: 185,
-                  child: Image.asset(
-                    'images/banners/dots.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-              SizedBox(height: 30.0),
-              Material(
-              borderRadius: BorderRadius.circular(60),
-              clipBehavior: Clip.antiAlias, 
-              child: InkWell(
-                borderRadius: BorderRadius.circular(60),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PuzzleGame()),
-                  );
-                },
-                child: SizedBox(
-                  height: 185,
-                  child: Image.asset(
-                    'images/banners/puzzle.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-              SizedBox(height: 30.0),
-              Material(
-              borderRadius: BorderRadius.circular(60),
-              clipBehavior: Clip.antiAlias, 
-              child: InkWell(
-                borderRadius: BorderRadius.circular(60),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SortingGame()),
-                  );
-                },
-                child: SizedBox(
-                  height: 185,
-                  child: Image.asset(
-                    'images/banners/sorter.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            ],
           ),
         ),
       ),
