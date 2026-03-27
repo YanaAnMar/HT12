@@ -104,31 +104,4 @@ class _HomepageState extends State<Homepage> {
       ),
     );
   }
-
-  Widget _buildBanner({
-    required BuildContext context,
-    required String imagePath,
-    required Widget destination,
-  }) {
-    return Material(
-      borderRadius: BorderRadius.circular(60),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(60),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => destination),
-          );
-        },
-        child: AspectRatio(
-          aspectRatio: 16 / 7,
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-    );
-  }
 }
