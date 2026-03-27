@@ -185,7 +185,7 @@ class _DotsGameState extends State<DotsGame> with SingleTickerProviderStateMixin
             child: Container(
               key: ValueKey(_step), width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-              color: Colors.grey.shade100,
+              color: const Color.fromARGB(255, 222, 250, 254),
               child: Text(_text[_step] ?? '', textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: Colors.black87, height: 1.4)),
             ),

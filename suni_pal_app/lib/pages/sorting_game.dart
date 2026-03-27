@@ -47,10 +47,13 @@ class _SortingGameState extends State<SortingGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 222, 250, 254),
       appBar: AppBar(
-        backgroundColor: Colors.white, elevation: 0,
-        title: const Text('Sort the Circles', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black87)),
+        backgroundColor: Color.fromARGB(255, 222, 250, 254), elevation: 0,
+        title: Image.asset(
+          'images/page_titles/sorter.png',
+          height: 60,
+          ),
         iconTheme: const IconThemeData(color: Colors.black87),
         actions: [IconButton(icon: const Icon(Icons.refresh), onPressed: () => setState(() { _newRound(); _selected = null; }))],
       ),
@@ -59,7 +62,7 @@ class _SortingGameState extends State<SortingGame> {
           Padding(
             padding: const EdgeInsets.all(16),
             child: Text(
-              _won ? 'You did it!' : 'Tap two circles to swap them.\nSmallest on the left, biggest on the right.',
+              _won ? 'Well done!' : 'Tap two circles to swap them.\nSmallest on the left, biggest on the right.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: _won ? Colors.green : Colors.black87),
             ),
